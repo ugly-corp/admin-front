@@ -3,6 +3,7 @@ import {
   Datagrid,
   TextField,
   ImageField,
+  NumberField,
 } from "react-admin";
 
 export default function CategoryList() {
@@ -12,6 +13,7 @@ export default function CategoryList() {
         <TextField source="id" />
         <TextField source="name" />
         <ImageField source="photo" />
+        <NumberField source="posts_count" label='Кол-во постов'/>
       </Datagrid>
     </List>
   );
