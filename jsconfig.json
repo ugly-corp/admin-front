@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "#app-components/*": ["./src/components/*"],
+      "#app-universal/*": ["./src/components/universal/*"],
+      "#app-constants/*": ["./src/constants/*"],
+      "#app-hooks/*": ["./src/hooks/*"],
+      "#app-helpers/*": ["./src/helpers/*"],
+      "#app-pages/*": ["./src/components/pages/*"],
+      "#app-providers/*": ["./src/providers/*"],
+      "#app-http/*": ["./src/http/*"],
+      "#app/*": ["./src/*"]
+    }
+  }
+}

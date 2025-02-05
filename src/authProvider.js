@@ -1,10 +1,10 @@
-import { AuthProvider, HttpError } from "react-admin";
+import { HttpError } from "react-admin";
 import data from "./users.json";
 
 /**
  * This authProvider is only for test purposes. Don't use it in production.
  */
-export const authProvider: AuthProvider = {
+export const authProvider = {
   login: ({ username, password }) => {
     const user = data.users.find(
       (u) => u.username === username && u.password === password,
