@@ -6,10 +6,10 @@ import {
   ShowGuesser,
 } from "react-admin";
 import { Layout } from "./Layout";
-import dataProvider from "./dataProvider";
-import { authProvider } from "./authProvider";
-import { PostList } from "#app-pages/Post";
-import { CategoryList } from "#app-pages/Category";
+import dataProvider from "./providers/dataProvider";
+import { authProvider } from "./providers/authProvider";
+import { PostList, PostShow } from "#app-pages/Post";
+import { CategoryList, CategoryShow } from "#app-pages/Category";
 import { UserList } from "#app-pages/Users";
 
 export const App = () => (
@@ -23,22 +23,22 @@ export const App = () => (
       name="post"
       list={PostList}
       edit={EditGuesser}
-      show={ShowGuesser}
-      options={{ label: 'Посты' }}
+      show={PostShow}
+      options={{ label: "Посты" }}
     />
     <Resource
       name="category"
       list={CategoryList}
       edit={EditGuesser}
-      show={ShowGuesser}
-      options={{ label: 'Категории' }}
+      show={CategoryShow}
+      options={{ label: "Категории" }}
     />
     <Resource
       name="user"
       list={UserList}
       edit={EditGuesser}
       show={ShowGuesser}
-      options={{ label: 'Пользователи' }}
+      options={{ label: "Пользователи" }}
     />
   </Admin>
 );
