@@ -10,7 +10,7 @@ import dataProvider from "./providers/dataProvider";
 import { authProvider } from "./providers/authProvider";
 import { PostList, PostShow } from "#app-pages/Post";
 import { CategoryList, CategoryShow } from "#app-pages/Category";
-import { UserList } from "#app-pages/Users";
+import { UserList, UserShow } from "#app-pages/Users";
 
 export const App = () => (
   <Admin
@@ -37,7 +37,7 @@ export const App = () => (
       name="user"
       list={UserList}
       edit={EditGuesser}
-      show={ShowGuesser}
+      show={UserShow}
       options={{ label: "Пользователи" }}
     />
   </Admin>
