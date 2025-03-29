@@ -1,11 +1,10 @@
-import { fetchUtils } from "react-admin";
 import { stringify } from "query-string";
 import categoryProvider from "./dataProviders/categoryProvider";
 import defaultProvider from "./dataProviders/defaultProvider";
+import { httpClient } from "#app-http/httpClient";
 
 const apiUrl =
   import.meta.env.VITE_SIMPLE_REST_URL + import.meta.env.VITE_URL_PATH;
-const httpClient = fetchUtils.fetchJson;
 
 export default {
   getList: async (resource, params) => {

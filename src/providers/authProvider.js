@@ -1,30 +1,30 @@
 import { HttpError } from "react-admin";
 import data from "../users.json";
 
-/**
- * This authProvider is only for test purposes. Don't use it in production.
- */
+
 export const authProvider = {
-  login: ({ username, password }) => {
-    const user = data.users.find(
-      (u) => u.username === username && u.password === password,
-    );
-
-    if (user) {
-      // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-      let { password, ...userToPersist } = user;
-      localStorage.setItem("user", JSON.stringify(userToPersist));
-      return Promise.resolve();
+  async login({ username, password })  {
+    const request = new Request(import.meta.env.VITE_SIMPLE_REST_URL + import.meta.env.VITE_URL_PATH + '/auth/login', {
+        method: 'POST',
+        body: JSON.stringify({ email: username, password }),
+        headers: new Headers({ 'Content-Type': 'application/json' }),
+    });
+    let response;
+    try {
+        response = await fetch(request);
+    } catch (_error) {
+        throw new Error('Network error');
     }
-
-    return Promise.reject(
-      new HttpError("Unauthorized", 401, {
-        message: "Invalid username or password",
-      }),
-    );
-  },
+    if (response.status < 200 || response.status >= 300) {
+        throw new Error(response.statusText);
+    }
+    const auth = await response.json();
+    localStorage.setItem('token', JSON.stringify(auth.data.token));
+    localStorage.setItem('user', JSON.stringify(auth.data.user));
+},
   logout: () => {
-    localStorage.removeItem("user");
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
     return Promise.resolve();
   },
   checkError: () => Promise.resolve(),
